@@ -25,3 +25,14 @@
 - npm install redux-persist
 
 automergelevel2 tells Redux Persist how to reconcile the initial and stored states of our application
+
+## Redux best practices
+
+- when we connect components to the redux store, file should export the connected and unconnected versions of a component
+- keep Redux actions and async operations out of your reducers
+-
+
+## Sideeffect libraries
+
+- Redux Thunk - easy
+- Redux Saga is popular

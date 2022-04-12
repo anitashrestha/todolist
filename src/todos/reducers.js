@@ -1,4 +1,4 @@
-import { CREATE_TODO, REMOVE_TODO } from "./actions";
+import { CREATE_TODO, REMOVE_TODO, MARK_TODO_AS_COMPLETED } from "./actions";
 
 //state= empty array means set the reducer default empty value
 export const todos = (state = [], action) => {
@@ -16,6 +16,16 @@ export const todos = (state = [], action) => {
 		case REMOVE_TODO: {
 			const { text } = payload;
 			return state.filter((todo) => todo.text !== text);
+		}
+		case MARK_TODO_AS_COMPLETED: {
+			const { text } = payload;
+			return state.map((todo) => {
+				if (todo.text === text) {
+					//text of todo is equal to payload text
+					return { ...todo, isCompleted: true };
+				}
+				return todo;
+			});
 		}
 		default: {
 			return state;
